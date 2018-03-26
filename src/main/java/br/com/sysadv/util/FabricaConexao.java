@@ -16,13 +16,14 @@ public class FabricaConexao {
 	// public static final String PONTE = "jdbc:mysql://127.0.0.1:3306/" +
 	// BANCO;
 	public static final String PONTE = "jdbc:mysql://sysadvocacia.mysql.uhserver.com:3306/" + BANCO;
-	public static final String USUARIO = "root";
-	public static final String SENHA = "root1";
+	public static final String USUARIO = "sysadv";
+	public static final String SENHA = "adv@01";
 	public static Connection conexao = null;
 
 	public static Connection getConexao() {
 		try {
 			Class.forName(DRIVER);
+                        System.out.println(PONTE+"\n"+USUARIO+"\n"+SENHA);
 			conexao = DriverManager.getConnection(PONTE, USUARIO, SENHA);
 
 		} catch (ClassNotFoundException | SQLException e) {
