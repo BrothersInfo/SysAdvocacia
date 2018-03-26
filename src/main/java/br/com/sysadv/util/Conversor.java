@@ -91,7 +91,7 @@ public class Conversor {
         }
     }*/
     public static String redimensionarFoto(String foto) {
-        final int TAMANHO = 250;
+        final int TAMANHO = 100;
         String caminho = null;
         try {
             File file = File.createTempFile("fotoRedimensionadaTemporaria", ".PNG");

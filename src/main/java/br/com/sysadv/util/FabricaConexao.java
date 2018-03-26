@@ -12,18 +12,21 @@ import java.sql.SQLException;
 
 public class FabricaConexao {
 	public static final String DRIVER = "com.mysql.jdbc.Driver";
-	public static final String BANCO = "sysadvocacia";
-	// public static final String PONTE = "jdbc:mysql://127.0.0.1:3306/" +
-	// BANCO;
-	public static final String PONTE = "jdbc:mysql://sysadvocacia.mysql.uhserver.com:3306/" + BANCO;
-	public static final String USUARIO = "sysadv";
-	public static final String SENHA = "adv@01";
+	// public static final String BANCO = "sysadvocacia";
+	public static final String BANCO = "sistemaadvocacia";
+	public static final String PONTE = "jdbc:mysql://127.0.0.1:3306/" + BANCO;
+	// public static final String PONTE =
+	// "jdbc:mysql://sysadvocacia.mysql.uhserver.com:3306/" + BANCO;
+	// public static final String USUARIO = "sysadv";
+	// public static final String SENHA = "adv@01";
+	public static final String USUARIO = "root";
+	public static final String SENHA = "root";
 	public static Connection conexao = null;
 
 	public static Connection getConexao() {
 		try {
 			Class.forName(DRIVER);
-                        System.out.println(PONTE+"\n"+USUARIO+"\n"+SENHA);
+			System.out.println(PONTE + "\n" + USUARIO + "\n" + SENHA);
 			conexao = DriverManager.getConnection(PONTE, USUARIO, SENHA);
 
 		} catch (ClassNotFoundException | SQLException e) {

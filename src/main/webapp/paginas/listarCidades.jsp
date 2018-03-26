@@ -93,6 +93,7 @@
 </head>
 <body>
 	<div id="main" class="container">
+		<s:property value="usuarioLogado" />
 		<nav class="navbar navbar-inverse navbar-fixed-top"
 			style="background-color: #ececec;">
 			<div class="container-fluid">

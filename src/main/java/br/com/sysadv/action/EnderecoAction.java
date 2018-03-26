@@ -4,9 +4,11 @@ import br.com.sysadv.bean.Endereco;
 import br.com.sysadv.dao.EnderecoDAO;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
-import javax.servlet.http.HttpServletResponse;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -20,8 +22,16 @@ public class EnderecoAction extends ActionSupport {
 	public Long codigoCidade;
 	public String nomeCidade;
 
-	@Action(value = "listarCidades", results = { @Result(name = "success", location = "/paginas/listarCidades.jsp") })
-	public String listarEnderecos() {
+	HttpServletRequest request = ServletActionContext.getRequest();
+	HttpSession session = request.getSession();
+	String usuarioLog = (String) session.getAttribute("usuarioLogado");
+
+	@Action(value = "listarCidades", results = { @Result(name = "success", location = "/paginas/listarCidades.jsp"),
+			@Result(name = "erro", location = "/paginas/login.jsp") })
+	public String listarEnderecos() throws IOException {
+		if (usuarioLog == null) {
+			return "erro";
+		}
 		EnderecoDAO dao = new EnderecoDAO();
 		this.listaCidades = dao.listarEndereco(this.nomeCidade);
 		return "success";
@@ -42,56 +52,62 @@ public class EnderecoAction extends ActionSupport {
 		return "success";
 	}
 
-	@Action(value = "alterarCidade", results = { @Result(name = "success", location = "/paginas/alterarCidade.jsp") })
+	@Action(value = "alterarCidade", results = { @Result(name = "success", location = "/paginas/alterarCidade.jsp"),
+			@Result(name = "erro", location = "/paginas/login.jsp") })
 	public String alterarCidade() {
+		if (usuarioLog == null) {
+			return "erro";
+		}
 		EnderecoDAO dao = new EnderecoDAO();
 		this.cidade = new Endereco();
 		this.cidade = dao.pegarCidadePeloCodigo(this.codigoCidade);
 		return "success";
 	}
 
-	@Action(value = "salvarCidade", results = { @Result(name = "success", location = "/paginas/listarCidades.jsp") })
+	@Action(value = "salvarCidade", results = { @Result(name = "success", location = "/paginas/listarCidades.jsp"),
+			@Result(name = "erro", location = "/paginas/login.jsp") })
 	public String salvarCidade() {
+		if (usuarioLog == null) {
+			return "erro";
+		}
 		EnderecoDAO dao = new EnderecoDAO();
 		dao.salvar(this.cidade);
 		this.listaCidades = dao.listarEndereco(this.nomeCidade);
 		return "success";
 	}
 
-	@Action(value = "novaCidade", results = { @Result(name = "success", location = "/paginas/novaCidade.jsp") })
+	@Action(value = "novaCidade", results = { @Result(name = "success", location = "/paginas/novaCidade.jsp"),
+			@Result(name = "erro", location = "/paginas/login.jsp") })
 	public String novaCidade() {
+		if (usuarioLog == null) {
+			return "erro";
+		}
 		return "success";
 	}
 
 	@Action(value = "confirmarAlteracaoCidade", results = {
-			@Result(name = "success", location = "/paginas/listarCidades.jsp") })
+			@Result(name = "success", location = "/paginas/listarCidades.jsp"),
+			@Result(name = "erro", location = "/paginas/login.jsp") })
 	public String confirmarAlteracaoCidade() {
+		if (usuarioLog == null) {
+			return "erro";
+		}
 		EnderecoDAO dao = new EnderecoDAO();
 		dao.alterar(this.cidade);
 		this.listaCidades = dao.listarEndereco(this.nomeCidade);
 		return "success";
 	}
 
-	@Action(value = "excluirCidade", results = { @Result(name = "success", location = "/paginas/listarCidades.jsp") })
+	@Action(value = "excluirCidade", results = { @Result(name = "success", location = "/paginas/listarCidades.jsp"),
+			@Result(name = "erro", location = "/paginas/login.jsp") })
 	public String excluirCidade() {
+		if (usuarioLog == null) {
+			return "erro";
+		}
 		EnderecoDAO dao = new EnderecoDAO();
 		dao.excluir(this.codigoCidade);
 		this.listaCidades = dao.listarEndereco(null);
 		return "success";
-	}
-
-	@Action("demo1")
-	public void demo1() {
-		try {
-			HttpServletResponse response = ServletActionContext.getResponse();
-			PrintWriter out = response.getWriter();
-
-			out.print("BrothersInfo Informática...");
-			out.flush();
-			out.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 
 	public Long getCodigoCidade() {
