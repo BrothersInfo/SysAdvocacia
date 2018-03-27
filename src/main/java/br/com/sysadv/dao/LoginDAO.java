@@ -12,7 +12,7 @@ public class LoginDAO {
     public boolean verificarLogin(String usuario, String senha) {
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String SQL = "SELECT * FROM usuario WHERE usuario = ? AND senha = ?";
+        String SQL = "SELECT * FROM usuario WHERE email = ? AND senha = ?";
 
         boolean retorno = false;
 

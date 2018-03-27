@@ -1,7 +1,10 @@
+<%@page import="org.apache.struts2.ServletActionContext"%>
+<%@page import="com.opensymphony.xwork2.ActionContext"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="display" uri="http://displaytag.sf.net"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -27,7 +30,7 @@
 							class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand"
-						href="http://localhost:8080/SistemaAdvocacia">Sistema
+						href="<% ServletActionContext.getContext().getContext(); %>">Sistema
 						Advocacia</a>
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
@@ -36,7 +39,7 @@
 						<li><s:a action="listarContatos">Listar Clientes</s:a></li>
 						<li><s:a action="novaCidade">Cadastrar Cidades</s:a></li>
 						<li><s:a action="listarCidades">Listar Cidades</s:a></li>
-						<li><a href="listarContatos">Sair</a></li>
+						<li><s:a action="finalizarSessao">Sair</s:a></li>
 					</ul>
 				</div>
 			</div>

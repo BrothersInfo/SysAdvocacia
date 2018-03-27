@@ -1,6 +1,7 @@
 package br.com.sysadv.action;
 
 import br.com.sysadv.bean.Endereco;
+import br.com.sysadv.bean.Usuario;
 import br.com.sysadv.dao.EnderecoDAO;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.IOException;
@@ -24,7 +25,7 @@ public class EnderecoAction extends ActionSupport {
 
 	HttpServletRequest request = ServletActionContext.getRequest();
 	HttpSession session = request.getSession();
-	String usuarioLog = (String) session.getAttribute("usuarioLogado");
+	Usuario usuarioLog = (Usuario) session.getAttribute("usuarioLogado");
 
 	@Action(value = "listarCidades", results = { @Result(name = "success", location = "/paginas/listarCidades.jsp"),
 			@Result(name = "erro", location = "/paginas/login.jsp") })
@@ -46,7 +47,6 @@ public class EnderecoAction extends ActionSupport {
 
 	@Action(value = "listagem", results = { @Result(name = "success", type = "json") })
 	public String listar() {
-		System.out.println("PASSOU");
 		EnderecoDAO dao = new EnderecoDAO();
 		this.listaCidades = dao.listarEndereco(this.nomeCidade);
 		return "success";

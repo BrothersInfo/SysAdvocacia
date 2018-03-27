@@ -10,45 +10,45 @@ import java.sql.SQLException;
 //import org.springframework.jndi.JndiTemplate;
 public class FabricaConexao {
 
-    public static final String DRIVER = "com.mysql.jdbc.Driver";
-    public static final String BANCO = "sysadvocacia";
-    //public static final String BANCO = "sistemaadvocacia";
-    //public static final String PONTE = "jdbc:mysql://127.0.0.1:3306/" + BANCO;
-    public static final String PONTE = "jdbc:mysql://sysadvocacia.mysql.uhserver.com:3306/" + BANCO;
-    public static final String USUARIO = "sysadv";
-    public static final String SENHA = "adv@01";
-    //public static final String USUARIO = "root";
-    //public static final String SENHA = "root";
-    public static Connection conexao = null;
+	public static final String DRIVER = "com.mysql.jdbc.Driver";
+	// public static final String BANCO = "sysadvocacia";
+	public static final String BANCO = "sistemaadvocacia";
+	public static final String PONTE = "jdbc:mysql://127.0.0.1:3306/" + BANCO;
+	// public static final String PONTE =
+	// "jdbc:mysql://sysadvocacia.mysql.uhserver.com:3306/" + BANCO;
+	// public static final String USUARIO = "sysadv";
+	// public static final String SENHA = "adv@01";
+	public static final String USUARIO = "root";
+	public static final String SENHA = "root";
+	public static Connection conexao = null;
 
-    public static Connection getConexao() {
-        try {
-            Class.forName(DRIVER);
-            System.out.println(PONTE + "\n" + USUARIO + "\n" + SENHA);
-            conexao = DriverManager.getConnection(PONTE, USUARIO, SENHA);
+	public static Connection getConexao() {
+		try {
+			Class.forName(DRIVER);
+			conexao = DriverManager.getConnection(PONTE, USUARIO, SENHA);
 
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-        return conexao;
-    }
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return conexao;
+	}
 
-    /*
+	/*
 	 * public static void main(String[] args) { for (int i = 0; i < 1000; i++) {
 	 * System.out.println("Conectado com sucesso " + i); getConexao();
 	 * desconectar(); } }
-     */
-    public static void desconectar() {
-        if (conexao != null) {
-            try {
-                conexao.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+	 */
+	public static void desconectar() {
+		if (conexao != null) {
+			try {
+				conexao.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
-    /*
+	/*
 	 * private static Connection conexao = null;
 	 * 
 	 * public static DataSource getDataSource() { DataSource dataSource = null;
@@ -63,10 +63,10 @@ public class FabricaConexao {
 	 * public static Connection getConexao() { try { conexao =
 	 * getDataSource().getConnection(); } catch (SQLException e) {
 	 * e.printStackTrace(); } return conexao; }
-     */
+	 */
 
- /*
+	/*
 	 * public static void desconectar() { try { if (conexao != null) {
 	 * conexao.close(); } } catch (SQLException e) { e.printStackTrace(); } }
-     */
+	 */
 }
