@@ -31,7 +31,6 @@ public class LoginAction extends ActionSupport {
 
 	@Action(value = "salvarUsuario", results = { @Result(name = "success", type = "json") })
 	public String salvarUsuario() {
-		System.out.println("***");
 		LoginDAO dao = new LoginDAO();
 		if (dao.salvarUsuario(usuario)) {
 			status = "ok";

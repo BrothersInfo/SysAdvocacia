@@ -31,7 +31,10 @@
 	$(document)
 			.ready(
 					function() {
+
 						var mascara = function(val) {
+							$("#txtemail").val("");
+							$("#txtsenha").val("");
 							return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000'
 									: '(00) 0000-00009';
 						}, spOptions = {
@@ -86,7 +89,8 @@
 												$("#divv").show();
 												$("#enviar").attr('disabled',
 														'disabled');
-												//$("#fechar").attr('disabled', 'disabled');
+												$("#txtemail").val("");
+												$("#txtsenha").val("");
 											}
 										}
 									});

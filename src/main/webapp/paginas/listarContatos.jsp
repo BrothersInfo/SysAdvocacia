@@ -82,6 +82,12 @@
 					});
 </script>
 
+<style type="text/css">
+.cor {
+	color: blue;
+}
+</style>
+
 </head>
 <body>
 	<div id="main" class="container">
@@ -115,7 +121,7 @@
 		<s:form id="formu" style="padding-top: 50px;" method="post"
 			action="listarContatos">
 			<fieldset>
-				<legend>Listagem de Clientes Cadastrados no Sistema</legend>
+				<legend class="cor">LISTAGEM DE CLIENTES CADASTRADOS NO SISTEMA</legend>
 
 				<div class="row">
 					<div class="col-md-6" style="padding-right: 0px;">
