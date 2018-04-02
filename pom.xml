@@ -7,6 +7,11 @@
 	<packaging>war</packaging>
 
 	<dependencies>
+                <dependency>
+                        <groupId>uk.co.mmscomputing</groupId>
+                        <artifactId>mmscomputing</artifactId>
+                        <version>2010.03.04</version>
+                </dependency>
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-core</artifactId>
