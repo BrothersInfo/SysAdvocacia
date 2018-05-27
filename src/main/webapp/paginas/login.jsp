@@ -31,8 +31,8 @@
 	$(document)
 			.ready(
 					function() {
-
-						var mascara = function(val) {
+					
+					    	var mascara = function(val) {
 							$("#txtemail").val("");
 							$("#txtsenha").val("");
 							return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000'
@@ -48,6 +48,11 @@
 						$(".logar").click(function() {
 							var email = $("#txtemail").val();
 							var senha = $("#txtsenha").val();
+							if(email == "" || senha == "") {
+							   $(".loginErrado").click();
+							   return;
+							}
+							
 							$.ajax({
 								type : "GET",
 								url : "logarNoSistema",

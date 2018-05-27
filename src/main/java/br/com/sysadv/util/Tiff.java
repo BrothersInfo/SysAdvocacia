@@ -5,7 +5,7 @@
  */
 package br.com.sysadv.util;
 
-import java.awt.image.BufferedImage;
+/*import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -15,13 +15,13 @@ import javax.imageio.ImageIO;
 import javax.imageio.stream.FileImageOutputStream;
 import uk.co.mmscomputing.imageio.tiff.TIFFImageWriteParam;
 import uk.co.mmscomputing.imageio.tiff.TIFFImageWriter;
-import uk.co.mmscomputing.imageio.tiff.TIFFImageWriterSpi;
+import uk.co.mmscomputing.imageio.tiff.TIFFImageWriterSpi;*/
 
 /**
  *
  * @author BrothersInfo
  */
-public class Tiff {
+/*public class Tiff {
     
     public static void main(String[] args) {
         String imagem = "C:\\ABQM\\FredDamy.jpg";
@@ -63,4 +63,4 @@ public class Tiff {
         	e.printStackTrace();
         }
     }
-}
+}*/

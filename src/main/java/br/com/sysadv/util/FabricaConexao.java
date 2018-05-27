@@ -3,23 +3,21 @@ package br.com.sysadv.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-//import java.util.Properties;
-
-//import javax.naming.NamingException;
-//import javax.sql.DataSource;
-//import org.springframework.jndi.JndiTemplate;
+import java.util.Properties;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+import org.springframework.jndi.JndiTemplate;
 public class FabricaConexao {
 
 	public static final String DRIVER = "com.mysql.jdbc.Driver";
-	// public static final String BANCO = "sysadvocacia";
-	public static final String BANCO = "sistemaadvocacia";
-	public static final String PONTE = "jdbc:mysql://127.0.0.1:3306/" + BANCO;
-	// public static final String PONTE =
-	// "jdbc:mysql://sysadvocacia.mysql.uhserver.com:3306/" + BANCO;
-	// public static final String USUARIO = "sysadv";
-	// public static final String SENHA = "adv@01";
-	public static final String USUARIO = "root";
-	public static final String SENHA = "root";
+	public static final String BANCO = "sysadvocacia";
+	//public static final String BANCO = "sistemaadvocacia";
+	//public static final String PONTE = "jdbc:mysql://127.0.0.1:3306/" + BANCO;
+	public static final String PONTE = "jdbc:mysql://sysadvocacia.mysql.uhserver.com:3306/" + BANCO;
+	public static final String USUARIO = "sysadv";
+	public static final String SENHA = "adv@01";
+	//ublic static final String USUARIO = "root";
+	//public static final String SENHA = "root";
 	public static Connection conexao = null;
 
 	public static Connection getConexao() {
@@ -47,26 +45,42 @@ public class FabricaConexao {
 			}
 		}
 	}
+	
+	  /*private static Connection conexao = null;
+	  
+	  public static DataSource getDataSource() { 
+	     DataSource dataSource = null;
+	  try { 
+	     Properties brothers = new Properties();
+	     brothers.setProperty("sourceLegado", "java:jboss/sistema"); 
+		 JndiTemplate template = new JndiTemplate(); 
+		 dataSource = (DataSource) template.lookup(brothers.getProperty("sourceLegado")); 
+		 System.out.println("BrothersInfo System - Conexão utilizando JNDI funcionando corretamente"); 
+		 } catch (NamingException ne) { 
+		 System.out.println("ERRO\n" + ne.getMessage()); 
+		 } 
+		    return dataSource; 
+		 }
+	  
+	  public static Connection getConexao() { 
+	     try { 
+		    conexao = getDataSource().getConnection(); 
+			} catch (SQLException e) {
+	           e.printStackTrace(); 
+			} return conexao; 
+			
+	    }
+	 
 
-	/*
-	 * private static Connection conexao = null;
-	 * 
-	 * public static DataSource getDataSource() { DataSource dataSource = null;
-	 * try { Properties brothers = new Properties();
-	 * brothers.setProperty("sourceLegado", "java:jboss/sistema"); JndiTemplate
-	 * template = new JndiTemplate(); dataSource = (DataSource)
-	 * template.lookup(brothers.getProperty("sourceLegado")); System.out.
-	 * println("BrothersInfo System - Conexão utilizando JNDI funcionando corretamente"
-	 * ); } catch (NamingException ne) { System.out.println("ERRO\n" +
-	 * ne.getMessage()); } return dataSource; }
-	 * 
-	 * public static Connection getConexao() { try { conexao =
-	 * getDataSource().getConnection(); } catch (SQLException e) {
-	 * e.printStackTrace(); } return conexao; }
-	 */
-
-	/*
-	 * public static void desconectar() { try { if (conexao != null) {
-	 * conexao.close(); } } catch (SQLException e) { e.printStackTrace(); } }
-	 */
+	
+	public static void desconectar() {
+ 		try { 
+		   if (conexao != null) {
+	          conexao.close(); 
+		    } 
+		} catch (SQLException e) { 
+		   e.printStackTrace(); 
+		} 
+	}*/
+	 
 }

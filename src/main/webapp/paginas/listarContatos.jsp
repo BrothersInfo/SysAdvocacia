@@ -91,8 +91,7 @@
 </head>
 <body>
 	<div id="main" class="container">
-		<nav class="navbar navbar-inverse navbar-fixed-top"
-			style="background-color: #ececec;">
+		<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #ececec;">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed"
